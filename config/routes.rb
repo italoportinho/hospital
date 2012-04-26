@@ -1,5 +1,9 @@
 Hospital::Application.routes.draw do
-  resources :employees
+  resources :employees   do
+    resources :professions
+  end
+
+  resources :professions
 
   get "home/index"
 
