@@ -1,4 +1,5 @@
-<%= form_for(@employee) do |f| %>
+<% @employee.professions.build %>
+<%= form_for(@employee) do |employee_form| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
@@ -12,18 +13,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= employee_form.label :name %><br />
+    <%= employee_form.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :cpf %><br />
-    <%= f.text_field :cpf %>
+    <%= employee_form.label :cpf %><br />
+    <%= employee_form.text_field :cpf %>
   </div>
   <div class="field">
-    <%= f.label :contact %><br />
-    <%= f.text_field :contact %>
+    <%= employee_form.label :contact %><br />
+    <%= employee_form.text_field :contact %>
   </div>
+
+    <h2>Tags</h2>
+      <%= render :partial => 'professions/form',
+                 :locals => {:form => employee_form} %>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= employee_form.submit %>
   </div>
 <% end %>

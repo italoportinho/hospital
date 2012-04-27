@@ -1,5 +1,5 @@
 Hospital::Application.routes.draw do
-  resources :employees   do
+  resources :employees  do
     resources :professions
   end
 
